@@ -11,7 +11,7 @@ function AuthRoute({ component }) {
     if (!isLoading) {
       if (!isAuthenticated) {
         // Si no está autenticado y ya ha terminado de cargar
-        navigate('/', { state: { prevRoute: location.pathname } });
+        navigate('/login', { state: { prevRoute: location.pathname } });
       }
     }
   }, [isLoading, isAuthenticated, location.pathname, navigate]);
