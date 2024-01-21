@@ -42,36 +42,47 @@ function MyMissions() {
     return !game ? (
         <div>Loading...</div>
       ) : (
-        <div>
-          <div>
-            <h3>{game.game.title}</h3>
-            <img src={game.game.picture} alt={game.game.title} />
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="title">Title:</label>
-                <input
-                type="text"
-                id="title"
-                name="title"
-                {...register('title', { required: true })}
-                />
-                <label htmlFor="description">Description:</label>
-                <textarea
-                id="description"
-                name="description"
-                {...register('description', { required: true })}
-                />
-                <button type="submit">Add Task</button>
-             </form>
+        <div className="missions-container">
+          <div className="missions-header">
+            <h3 className="missions-title">{game.game.title}</h3>
+            <img className="missions-image" src={game.game.picture} alt={game.game.title} />
+            <div className="superposicion"></div>
           </div>
-          {Array.isArray(game?.game.tasks) && game.game.tasks.map((task) => (
-            <div key={task._id}>
-              <h4>{task.title}</h4>
-              <p>{task.description}</p>
-                <button onClick={() => handleDeleteTask(task._id)}>
-                    Delete Task
-                </button>
+          <div className="missions-content-container">
+            <div className="form-area-container">
+              <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+                  <label htmlFor="title">Title:</label>
+                  <input placeholder="Conseguir 100 monedas de oro"
+                  type="text"
+                  id="title"
+                  name="title"
+                  {...register('title', { required: true })}
+                  />
+                  <label htmlFor="description">Description:</label>
+                  <textarea
+                  placeholder="Hacer todas las quests que hay en Vientormenta para conseguir oro"
+                  id="description"
+                  name="description"
+                  {...register('description', { required: true })}
+                  />
+                  <button type="submit">Add Task</button>
+              </form>
             </div>
-          ))}
+          </div>
+          <div className="missions-area">
+          <h4 className="tasks-area-title">MY MISSIONS</h4>
+            <div className="tasks-area">
+            {Array.isArray(game?.game.tasks) && game.game.tasks.map((task) => (
+              <div className="task-card" key={task._id}>
+                <h4 className="task-card-title">{task.title}</h4>
+                <p className="task-card-description">{task.description}</p>
+                  <button className="card-delete" onClick={() => handleDeleteTask(task._id)}>
+                      X
+                  </button>
+              </div>
+            ))}
+            </div>
+          </div>
         </div>
       );
       

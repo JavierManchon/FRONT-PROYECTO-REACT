@@ -25,19 +25,25 @@ function GamesForm() {
   });
 
   return (
-    <div>
-      <form onSubmit={onSubmit} encType="multipart/form-data">
-        <input type="text" placeholder="Pokemon Emerald" {...register("title")} />
-        <input type="number" placeholder="9" min="1" max="10" {...register("rating")} />
-        <textarea
-          type="text"
-          placeholder="Wonderful and gorgeous game. Peak content by Nintendo"
-          rows="3"
-          {...register("review")}
-        />
-        <input type="file" id="picture" name="picture" {...register("picture")} />
-        <button type="submit">Save</button>
-      </form>
+    <div className="gameform-container">
+      <div className="content-container">
+        <div className="form-area-container" >
+          <h4 className="gameform-title">ADD A NEW GAME!</h4>
+          <form className="gameform-form" onSubmit={onSubmit} encType="multipart/form-data">
+            <input type="text" maxLength="15" placeholder="Pokemon Emerald" {...register("title")} />
+            <input type="number" placeholder="9" min="1" max="10" {...register("rating")} />
+            <textarea
+              type="text" maxLength="75"
+              placeholder="Wonderful and gorgeous game. Peak content by Nintendo"
+              rows="3"
+              {...register("review")}
+            />
+            <p className="jpeg">Solo archivos .jpeg</p>
+            <input type="file" id="picture" name="picture" {...register("picture")} />
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

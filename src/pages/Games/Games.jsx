@@ -23,10 +23,9 @@ function Games() {
   };
 
   return !user ? (
-    <div>Loading...</div>
+    <div className="loading">Loading...</div>
   ) : (
-    <div>
-      <h4>Games</h4>
+    <div className="games-container">
       {!games.length ? (
         <div>
           <h4>No games found!</h4>
@@ -34,20 +33,24 @@ function Games() {
         </div>
       ) : (
         games.map((game) => (
-        <div key={game._id}>
-          <h4>{game.title}</h4>
-          <p>{game.rating}</p>
-          <p>{game.review}</p>
-          <img src={game.picture} alt={game.title} />
-                <button onClick={(e) => 
+        <div className="game-card" key={game._id}>
+          <img className="card-picture" src={game.picture} alt={game.title} />
+          <h4 className="card-title">{game.title}</h4>
+          <div className="card-rating">
+            <p className="card-rating-number">{game.rating}</p>
+          </div>
+          <div className="card-review">
+            <p className="card-review-text">{game.review}</p>
+          </div>
+                <button className="card-delete" onClick={(e) => 
                   {
                     e.preventDefault();
                     handleDeleteGame(game._id)
                     }
                 }>
-                    Delete Game
+                    X
                 </button>
-          <button><Link to={`/games/${game._id}/my-missions`}>Track It!</Link></button>
+          <button className="card-trackit"><Link to={`/games/${game._id}/my-missions`}>Track It!</Link></button>
         </div>
       ))
       )}
