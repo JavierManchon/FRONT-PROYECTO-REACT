@@ -42,14 +42,36 @@ export function GamesProvider({ children }) {
         }
       };
 
-    const createTask = async (game) => {
-        const res = await createTaskReq(game);
+    const createTask = async (gameId, taskData) => {
+        const res = await createTaskReq(gameId, taskData);
         console.log(res)
     }
 
+    const deleteTask = async (taskId) => {
+        try {
+          const res = await deleteTaskReq(taskId);
+          console.log(res);
+          // Actualiza las tareas después de eliminar una tarea exitosamente
+          setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      const deleteGame = async (gameId) => {
+        try {
+          const res = await deleteTaskReq(gameId);
+          console.log(res);
+          // Actualiza las tareas después de eliminar una tarea exitosamente
+          setTasks((prevGames) => prevGames.filter((game) => game._id !== gameId));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
 
     return (
-        <GamesContext.Provider value={{ game, games, tasks, createGame, getGames, createTask, getGame }}>
+        <GamesContext.Provider value={{ game, games, tasks, createGame, getGames, createTask, getGame, deleteTask, deleteGame }}>
             {children}
         </GamesContext.Provider>
     )
