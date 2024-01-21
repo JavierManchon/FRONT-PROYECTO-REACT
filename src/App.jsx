@@ -10,6 +10,7 @@ import AuthRoute from "./components/AuthRoute";
 import NotFound from "./components/NotFound";
 import { GamesProvider } from "./context/GamesContext";
 import MyMissions from "./pages/MyMissions/MyMissions";
+import Nav from "./components/Nav";
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
     <AuthProvider>
       <GamesProvider>
         <BrowserRouter>
+        <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

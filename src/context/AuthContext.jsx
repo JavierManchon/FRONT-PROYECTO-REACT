@@ -3,7 +3,7 @@ import { registerReq, loginReq, verifyTokenReq } from '../api/auth';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
-export const AuthContext = createContext();
+export const AuthContext = createContext();;
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -43,6 +43,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = () => {
+    Cookies.remove('token');
+    setIsAuthenticated(false);
+    setUser(null);
+  };
+
   useEffect(() => {
     async function checkLogin() {
       const cookies = Cookies.get();
@@ -78,6 +84,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signup,
         signin,
+        logout,
         isLoading,
         user,
         isAuthenticated,

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { createGameReq, getGamesReq, createTaskReq, deleteTaskReq, getTasksReq, getGameReq } from "../api/games";
+import { createGameReq, getGamesReq, createTaskReq, deleteTaskReq, deleteGameReq, getGameReq } from "../api/games";
 
 
 const GamesContext = createContext();
@@ -60,10 +60,10 @@ export function GamesProvider({ children }) {
 
       const deleteGame = async (gameId) => {
         try {
-          const res = await deleteTaskReq(gameId);
+          const res = await deleteGameReq(gameId);
           console.log(res);
           // Actualiza las tareas después de eliminar una tarea exitosamente
-          setTasks((prevGames) => prevGames.filter((game) => game._id !== gameId));
+          setGames((prevGames) => prevGames.filter((game) => game._id !== gameId));
         } catch (error) {
           console.error(error);
         }

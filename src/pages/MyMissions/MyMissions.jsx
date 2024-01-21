@@ -45,6 +45,7 @@ function MyMissions() {
         <div>
           <div>
             <h3>{game.game.title}</h3>
+            <img src={game.game.picture} alt={game.game.title} />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="title">Title:</label>
                 <input
