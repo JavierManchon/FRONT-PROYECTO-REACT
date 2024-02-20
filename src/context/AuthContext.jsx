@@ -16,7 +16,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(null);
-  const [errors, setErrors] = useState([]);
+  const [errors, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const signup = async (user) => {
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
-      setErrors(error.response.data);
+      setError(error.response.data);
     }
   };
 
@@ -37,9 +37,9 @@ export const AuthProvider = ({ children }) => {
       console.log('Token:', res.data.token);
     } catch (error) {
       if (Array.isArray(error.response.data)) {
-        return setErrors(error.response.data);
+        return setError(error.response.data);
       }
-      setErrors([error.response.data.message]);
+      setError([error.response.data.message]);
     }
   };
 
@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     Cookies.remove('token');
     setIsAuthenticated(false);
     setUser(null);
+    setError(null);
   };
 
   useEffect(() => {
@@ -72,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         setUser(null);
       } finally {
-        setIsLoading(false); // Agrega esta línea
+        setIsLoading(false);
       }
     }
   

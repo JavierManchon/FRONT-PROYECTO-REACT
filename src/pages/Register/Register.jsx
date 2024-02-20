@@ -22,26 +22,22 @@ function Register() {
       <img src='https://res.cloudinary.com/dbckjkikz/image/upload/v1705855281/o8mkykact6lteftwi7e4.png' alt='Logo de game Vault' className='logo-register'/>
       <div className="content-container">
         <div className="form-area-container">
-          {
-            registerErrors.map((error, i) => {
-              <div key={i}>
-                {error}
-              </div>
-            })
-          }
-          <form className="register-form" onSubmit={handleSubmit(async (values) => {
-              signup(values);
-            })}>
-            <input className="login-input" type="text" placeholder="Username" {...register('username', {required: true})}></input>
-            {errors.username && <p>Username is required</p>}
-            <input className="login-input" type="email" placeholder="Email" {...register('email', {required: true})}></input>
-            {errors.username && <p>Email is required</p>}
-            <input className="login-input" type="password" placeholder="Password" {...register('password', {required: true})}></input>
-            {errors.username && <p>Password is required</p>}
-            <button className="login-button" type="submit">Register</button>
-          </form>
-          <p className="redirect-link" ><Link to="/login">Already have an account?</Link></p>
-        </div>
+        <form className="register-form" onSubmit={handleSubmit(async (values) => {
+          signup(values);
+        })}>
+          <input className="login-input" type="text" placeholder="Username" {...register('username', { required: true })}></input>
+          {errors.username && <p>Username is required</p>}
+          <input className="login-input" type="email" placeholder="Email" {...register('email', { required: true })}></input>
+          {errors.email && <p>Email is required</p>}
+          <input className="login-input" type="password" placeholder="Password" {...register('password', { required: true })}></input>
+          {errors.password && <p>Password is required</p>}
+          {registerErrors.map((error, i) => (
+          <div className="error-message" key={i}>{error}</div>
+          ))}
+          <button className="login-button" type="submit">Register</button>
+        </form>
+        <p className="redirect-link"><Link to="/login">Already have an account?</Link></p>
+      </div>
       </div>
     </div>
   )
