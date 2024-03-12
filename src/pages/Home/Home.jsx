@@ -7,7 +7,7 @@ function Home() {
       </section>
       <section className="demo-container">
         <img src="https://res.cloudinary.com/dbckjkikz/image/upload/v1705872171/lj7jranmogsdbsxs3dbn.png" alt="Imagen ordenador y el texto manage your games" />
-        <p className='home-text-demo'>En Game Vault podrás tener un registro de todos tus juegos, hacer valoraciones y dejar comentarios sobre ellos, y controlar en todo momento aquellas misiones o tareas relacionadas con cada videojuego. Cuando ya tengas tu juegos registrado pulsa el botón TrackIt! y accede a las misiones que has fijado en tu perfil.</p>
+        {/*<p className='home-text-demo'>En Game Vault podrás tener un registro de todos tus juegos, hacer valoraciones y dejar comentarios sobre ellos, y controlar en todo momento aquellas misiones o tareas relacionadas con cada videojuego. Cuando ya tengas tu juegos registrado pulsa el botón TrackIt! y accede a las misiones que has fijado en tu perfil.</p>*/}
       </section>
       <section className="features-container">
       <img src="https://res.cloudinary.com/dbckjkikz/image/upload/v1705872188/reyphbvymyv06q0xo8is.png" alt="Imagen movil y el texto track your missions" />
